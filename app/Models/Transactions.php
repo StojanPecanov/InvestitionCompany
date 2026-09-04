@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Client;
 
 class Transactions extends Model
 {
@@ -14,4 +15,9 @@ class Transactions extends Model
         'quantity',
         'price',
     ];
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

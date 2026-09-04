@@ -28,7 +28,11 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:clients,name',
+        ]);
+        Client::create($validated);
+        return response()->json(['message' => 'Client created successfully'], 201);
     }
 
     /**
