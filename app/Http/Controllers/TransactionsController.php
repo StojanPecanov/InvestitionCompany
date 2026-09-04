@@ -73,9 +73,6 @@ class TransactionsController extends Controller
 
             /*
              * Lock the client row.
-             *
-             * This prevents two transactions for the same client
-             * from changing the balance at the same time.
              */
             $client = Client::where('id', $validated['client_id'])
                 ->lockForUpdate()
@@ -185,7 +182,6 @@ class TransactionsController extends Controller
             /*
              * Calculate amount from quantity × price.
              *
-             * We do NOT trust the amount sent by the user.
              */
             $amount = round(
                 $validated['quantity'] * $validated['price'],

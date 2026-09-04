@@ -180,7 +180,7 @@ class TransactionControllerTest extends TestCase
             'quantity' => 10,
             'price' => 200,
 
-            // Намерно погрешен amount
+            // Wrong amount sent by the user. The server should calculate it instead.
             'amount' => 1,
         ]);
 
@@ -221,7 +221,7 @@ class TransactionControllerTest extends TestCase
 
         $response->assertStatus(422);
 
-        // Само deposit постои.
+        // Сlient has only 1 transaction (the deposit). The buy transaction should not be created.
         $this->assertDatabaseCount('transactions', 1);
     }
 
