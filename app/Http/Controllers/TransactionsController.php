@@ -28,6 +28,8 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
+        
+
         $validated = $request->validate([
             'client_id' => [
                 'required',
@@ -64,8 +66,10 @@ class TransactionsController extends Controller
                 'gt:0',
             ],
         ]);
+        
 
         return DB::transaction(function () use ($validated) {
+            
 
             /*
              * Lock the client row.
@@ -233,8 +237,9 @@ class TransactionsController extends Controller
                 ")
                 ->value('quantity');
 
-
+            
             if ($validated['quantity'] > $ownedQuantity) {
+            
                 throw ValidationException::withMessages([
                     'quantity' =>
                         "Insufficient holdings. You own {$ownedQuantity} {$validated['instrument']} shares."

@@ -23,7 +23,7 @@ class TransactionControllerTest extends TestCase
             'name' => 'John Smith',
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'deposit',
             'amount' => 10000,
@@ -48,7 +48,7 @@ class TransactionControllerTest extends TestCase
             'name' => 'John Smith',
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'deposit',
             'amount' => 0,
@@ -77,7 +77,7 @@ class TransactionControllerTest extends TestCase
             'amount' => 10000,
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'withdrawal',
             'amount' => 3000,
@@ -108,7 +108,7 @@ class TransactionControllerTest extends TestCase
             'amount' => 10000,
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'withdrawal',
             'amount' => 15000,
@@ -137,7 +137,7 @@ class TransactionControllerTest extends TestCase
             'amount' => 10000,
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'buy',
             'instrument' => 'AAPL',
@@ -173,7 +173,7 @@ class TransactionControllerTest extends TestCase
             'amount' => 10000,
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'buy',
             'instrument' => 'AAPL',
@@ -211,7 +211,7 @@ class TransactionControllerTest extends TestCase
             'amount' => 1000,
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'buy',
             'instrument' => 'AAPL',
@@ -252,7 +252,7 @@ class TransactionControllerTest extends TestCase
             'price' => 200,
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'sell',
             'instrument' => 'AAPL',
@@ -297,7 +297,7 @@ class TransactionControllerTest extends TestCase
             'price' => 200,
         ]);
 
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client->id,
             'type' => 'sell',
             'instrument' => 'AAPL',
@@ -334,7 +334,7 @@ class TransactionControllerTest extends TestCase
         ]);
 
         // Client 2 нема пари.
-        $response = $this->postJson('/transactions', [
+        $response = $this->postJson('/api/transactions', [
             'client_id' => $client2->id,
             'type' => 'buy',
             'instrument' => 'AAPL',
@@ -390,7 +390,7 @@ class TransactionControllerTest extends TestCase
         ]);
 
         $response = $this->getJson(
-            "/clients/{$client->id}/summary"
+            "/api/clients/{$client->id}/summary"
         );
 
         $response

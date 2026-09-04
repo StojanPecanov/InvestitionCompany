@@ -12,7 +12,7 @@ class ClientControllerTest extends TestCase
 
     public function test_client_can_be_created(): void
     {
-        $response = $this->postJson('/clients', [
+        $response = $this->postJson('/api/clients', [
             'name' => 'John Smith',
         ]);
 
@@ -29,7 +29,7 @@ class ClientControllerTest extends TestCase
 
     public function test_client_name_is_required(): void
     {
-        $response = $this->postJson('/clients', []);
+        $response = $this->postJson('/api/clients', []);
 
         $response->assertStatus(422);
 
@@ -40,7 +40,7 @@ class ClientControllerTest extends TestCase
 
     public function test_client_name_must_be_a_string(): void
     {
-        $response = $this->postJson('/clients', [
+        $response = $this->postJson('/api/clients', [
             'name' => 12345,
         ]);
 
@@ -58,7 +58,7 @@ class ClientControllerTest extends TestCase
             'name' => 'John Smith',
         ]);
 
-        $response = $this->postJson('/clients', [
+        $response = $this->postJson('/api/clients', [
             'name' => 'John Smith',
         ]);
 
